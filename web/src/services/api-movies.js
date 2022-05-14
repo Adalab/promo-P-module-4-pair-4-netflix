@@ -1,9 +1,9 @@
 // login
 
-const getMoviesFromApi = () => {
-  console.log('Se están pidiendo las películas de la app');
-  // CAMBIA ESTE FETCH PARA QUE APUNTE A UN ENDPOINT DE TU SERVIDOR, PIENSA SI DEBE SER GET O POST, PIENSA QUÉ DATOS DEBES ENVIAR, ETC
-  return fetch('//localhost:4000/movies', {
+const getMoviesFromApi = (params) => {
+  // console.log(params.gender);
+  // 3. Amplía la URL del fetch para enviar por query params un parámetro llamado gender que sea igual que el valor seleccionado por la usuaria.
+  return fetch(`http://localhost:4000/movies?gender=${params.gender}&sort=${params.sort}`, {
     method: 'GET',
   })
     .then((response) => response.json())

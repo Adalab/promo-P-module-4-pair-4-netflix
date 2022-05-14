@@ -18,6 +18,12 @@
       "title": "Cars",
       "gender": "Animación",
       "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "4",
+      "title": "Zootopia",
+      "gender": "Animación",
+      "image": "https://via.placeholder.com/150"  
     }
   ]
 }
