@@ -22,8 +22,10 @@ server.get('/movies', (req, res) => {
   // ternario para evitar que la variable se quede undefined según Iván
   const genderFilterParam = req.query.gender ? req.query.gender : '';
 
+  // creo que no la necesitamos al final?
   const sortFilterParam = req.query.sort ? req.query.sort : 'asc';
 
+  // podrían estar fuera?
   const compareAsc = (a, b) => {
     if (a.title > b.title) {
       return 1;

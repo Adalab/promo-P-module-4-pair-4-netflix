@@ -2,7 +2,7 @@
 
 const getMoviesFromApi = (params) => {
   // console.log(params.gender);
-  // 3. Amplía la URL del fetch para enviar por query params un parámetro llamado gender que sea igual que el valor seleccionado por la usuaria.
+  // 3. Amplía la URL del fetch para enviar por query params un parámetro llamado gender que sea igual que el valor seleccionado por la usuaria. + parámetro de sort
   return fetch(`http://localhost:4000/movies?gender=${params.gender}&sort=${params.sort}`, {
     method: 'GET',
   })
