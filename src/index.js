@@ -14,6 +14,15 @@ server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
+
+const staticServerPathWeb = './src/public-react'; // En esta carpeta ponemos los ficheros estáticos - La ruta es relativa desde la raiz del proyecto (servidor).
+server.use(express.static(staticServerPathWeb));
+
+const staticServerPathWebImg = './src/public-movies-images'; // En esta carpeta ponemos los ficheros estáticos - La ruta es relativa desde la raiz del proyecto (servidor).
+server.use(express.static(staticServerPathWebImg));
+
+
+
 server.get('/movie/:movieId', (req, res) => {
   console.log(req.params.movieId);
   const foundMovie = moviesList.movies.find(
@@ -28,7 +37,7 @@ server.get('/movie/:movieId', (req, res) => {
 // Escribimos los endpoints que queramos
 server.get('/movies', (req, res) => {
   // 2. Consolea los query params que estás recibiendo.
-  console.log(req.query.sort);
+  // console.log(req.query.sort);
 
   // 3. Guarda el valor del query param de género en una constante
   // ternario para evitar que la variable se quede undefined según Iván
@@ -71,12 +80,3 @@ server.get('/movies', (req, res) => {
 
 
 });
-//   const response = moviesList;
-//   res.json(response);
-// });
-
-const staticServerPathWeb = './src/public-react'; // En esta carpeta ponemos los ficheros estáticos - La ruta es relativa desde la raiz del proyecto (servidor).
-server.use(express.static(staticServerPathWeb));
-
-const staticServerPathWebImg = './src/public-movies-images'; // En esta carpeta ponemos los ficheros estáticos - La ruta es relativa desde la raiz del proyecto (servidor).
-server.use(express.static(staticServerPathWebImg));

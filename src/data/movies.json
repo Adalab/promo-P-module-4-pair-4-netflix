@@ -17,7 +17,7 @@
       "id": "3",
       "title": "Cars",
       "gender": "Animación",
-      "image": "//localhost:4000/gambito.jpg"
+      "image": "//localhost:4000/carsmentira.png"
     },
     {
       "id": "4",
@@ -29,7 +29,7 @@
       "id": "5",
       "title": "Cars de mentira",
       "gender": "Animación",
-      "image": "//localhost:4000/gambito.jpg"
+      "image": "//localhost:4000/cars.png"
     }
   ]
 }
