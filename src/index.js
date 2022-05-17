@@ -6,11 +6,23 @@ const moviesList = require('./data/movies.json');
 const server = express();
 server.use(cors());
 server.use(express.json());
+server.set('view engine', 'ejs');
 
 // init express aplication
 const serverPort = 4000;
 server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
+});
+
+server.get('/movie/:movieId', (req, res) => {
+  console.log(req.params.movieId);
+  const foundMovie = moviesList.movies.find(
+    (movie) => movie.id === req.params.movieId
+  );
+
+  console.log(foundMovie);
+
+  res.render('movie', {});
 });
 
 // Escribimos los endpoints que queramos
