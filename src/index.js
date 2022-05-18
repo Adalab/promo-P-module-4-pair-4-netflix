@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const moviesList = require('./data/movies.json');
+const dataBase = require('better-sqlite3');
 
 // create and config server
 const server = express();
@@ -15,19 +16,28 @@ server.listen(serverPort, () => {
 });
 
 server.get('/movie/:movieId', (req, res) => {
-  console.log(req.params.movieId);
+  console.log('ID de la URL', req.params.movieId);
   const foundMovie = moviesList.movies.find(
     (movie) => movie.id === req.params.movieId
   );
 
-  console.log(foundMovie);
+  console.log('foundMovie', foundMovie);
 
-  res.render('movie', {});
+  res.render('movie');
 });
+
+//Definino  la DB con la que vamos a trabajar
+const db = dataBase('./src/data/netflix.db', { verbose: console.log });
 
 // Escribimos los endpoints que queramos
 server.get('/movies', (req, res) => {
-  const response = moviesList;
+  const query = db.prepare(`SELECT * FROM movies order by title`);
+  const movieListDB = query.all();
+
+  const response = {
+    success: true,
+    movies: movieListDB,
+  };
   res.json(response);
 });
 
