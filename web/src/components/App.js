@@ -73,6 +73,7 @@ const App = () => {
   }, [userId]);
 
   // Day 3. Usa un useEffect para que, cada vez que cambie el valor de userId, se guarde en el local storage.
+  // 4. Mantener logada a la usuaria
   useEffect(() => {
     LS.set('userId', userId);
   }, [userId]);

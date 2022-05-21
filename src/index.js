@@ -26,9 +26,10 @@ server.get('/movie/:movieId', (req, res) => {
     (movie) => movie.id === req.params.movieId
   );
 
-  console.log('foundMovie', foundMovie);
+  console.log(foundMovie);
 
-  res.render('movie');
+  // Day 4. Aquí le estamos diciendo que renderice la plantilla movie con los datos foundMovie.
+  res.render('movie', foundMovie);
 });
 
 //Definino  la DB con la que vamos a trabajar
