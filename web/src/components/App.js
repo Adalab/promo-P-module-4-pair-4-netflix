@@ -11,10 +11,11 @@ import SignUp from './SignUp';
 import apiMovies from '../services/api-movies';
 import apiUser from '../services/api-user';
 import router from '../services/router';
+import LS from '../services/local-storage';
 
 const App = () => {
   // state: user
-  const [userId, setUserId] = useState('');
+  const [userId, setUserId] = useState(LS.get('userId', []));
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -69,6 +70,11 @@ const App = () => {
         setUserMovies(response.movies);
       });
     }
+  }, [userId]);
+
+  // Day 3. Usa un useEffect para que, cada vez que cambie el valor de userId, se guarde en el local storage.
+  useEffect(() => {
+    LS.set('userId', userId);
   }, [userId]);
 
   /*

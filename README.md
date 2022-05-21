@@ -22,7 +22,7 @@ En la raíz del proyecto:
 
 Por favor marca a continuación los ejericios que hayais terminado:
 
-4.1 Node JS:
+  4.1 Node JS:
 
 - [x] 1. Crea el proyecto
 - [x] 2. Arranca el backend
@@ -41,7 +41,7 @@ Por favor marca a continuación los ejericios que hayais terminado:
 - [x] 1. Servidor de estáticos para React
 - [x] 2. Servidor de estáticos para las fotos
 - [1/2] 3. Peticiones POST con body params
-- [ ] 4. Mantener logada a la usuaria
+- [x] 4. Mantener logada a la usuaria
 
   4.4 Express JS III:
 
