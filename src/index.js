@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const moviesList = require('./data/movies.json');
+// Day 3. Importa este fichero al principio de src/index.js y guárdalo en la constante users.
+const usersList = require('./data/users.json');
+
 const dataBase = require('better-sqlite3');
 
 // create and config server
@@ -13,8 +16,8 @@ server.set('view engine', 'ejs');
 const serverPort = 4000;
 server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
-});
 
+});
 
 
 server.get('/movie/:movieId', (req, res) => {
@@ -85,6 +88,15 @@ server.get('/movies', (req, res) => {
   res.json(response);
 });
 
+// Day 3. En src/index.js después del endpoint de GET:/movies añade otro endpoint con la ruta y el verbo correctos.
+
+server.post('/login', (req, res) => {
+  // Consolea los body params para ver que todo está ok
+  // No está ok, req.query me llega {} o undefined :SSS
+   console.log('Bon dia', req.query);
+
+   res.json('Sep')
+})
 
 
 
