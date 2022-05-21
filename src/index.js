@@ -16,9 +16,7 @@ server.set('view engine', 'ejs');
 const serverPort = 4000;
 server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
-
 });
-
 
 server.get('/movie/:movieId', (req, res) => {
   console.log('ID de la URL', req.params.movieId);
@@ -37,6 +35,8 @@ const db = dataBase('./src/data/netflix.db', { verbose: console.log });
 
 // Escribimos los endpoints que queramos
 server.get('/movies', (req, res) => {
+  /*
+  
   // 2. Consolea los query params que estás recibiendo.
   // console.log(req.query.sort);
 
@@ -56,7 +56,7 @@ server.get('/movies', (req, res) => {
       return -1;
     }
     return 0;
-  }
+  };
 
   const compareDesc = (a, b) => {
     if (a.title < b.title) {
@@ -66,8 +66,7 @@ server.get('/movies', (req, res) => {
       return -1;
     }
     return 0;
-  }
-
+  };
 
   // 4.Hasta ahora estamos devolviendo todas las películas que tenemos en src/data/movies.json. Ahora tienes que filtrar dichas películas y responder con el listado filtrado.
   res.json({
@@ -79,7 +78,9 @@ server.get('/movies', (req, res) => {
       .filter((movie) => movie.gender.includes(genderFilterParam)),
   });
 
-  const query = db.prepare(`SELECT * FROM movies order by title`);
+  */
+
+  const query = db.prepare('SELECT * FROM movies order by title');
   const movieListDB = query.all();
 
   const response = {
@@ -90,22 +91,38 @@ server.get('/movies', (req, res) => {
 });
 
 // Day 3. En src/index.js después del endpoint de GET:/movies añade otro endpoint con la ruta y el verbo correctos.
-
 server.post('/login', (req, res) => {
   // Consolea los body params para ver que todo está ok
   // No está ok, req.query me llega {} o undefined :SSS
-   console.log('Bon dia', req.query);
+  // console.log('Bon dia', req.query);
 
-   res.json('Sep')
-})
+  const emailParams = req.body.email;
+  const passwordParams = req.body.password;
+
+  console.log(emailParams, passwordParams);
+
+  const userFound = usersList.find((user)=> user.email.includes(emailParams) && user.password.includes(passwordParams))
+
+  console.log(userFound);
+
+  if (userFound !== undefined) {
+    return res.json({
+      "success": true,
+      "userId": userFound.name,
+    });
+  } else {
+    return res.json({
+      "success": false,
+      "errorMessage": "User not found :("
+    })
+  }
 
 
+});
 
-
-server.post('/sign-up', (req, res) =>{
+server.post('/sign-up', (req, res) => {
   console.log('sucedo?', req.body);
-  
-})
+});
 
 /*
 cÓDIGO de dayana
@@ -149,8 +166,6 @@ server.post('/add', (req, res) => {
 
 
 */
-
-
 
 const staticServerPathWeb = './src/public-react'; // En esta carpeta ponemos los ficheros estáticos - La ruta es relativa desde la raiz del proyecto (servidor).
 server.use(express.static(staticServerPathWeb));

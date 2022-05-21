@@ -15,7 +15,7 @@ import LS from '../services/local-storage';
 
 const App = () => {
   // state: user
-  const [userId, setUserId] = useState(LS.get('userId', []));
+  const [userId, setUserId] = useState(LS.get('userId', ''));
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -72,6 +72,7 @@ const App = () => {
     }
   }, [userId]);
 
+  // comentar y borrar LS en Navegador para que deje de estar logeado :S
   // Day 3. Usa un useEffect para que, cada vez que cambie el valor de userId, se guarde en el local storage.
   // 4. Mantener logada a la usuaria
   useEffect(() => {

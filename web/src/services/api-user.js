@@ -16,9 +16,9 @@ const sendLoginToApi = (data) => {
     })
       //  Borra todo el contenido de este then y retorna lo que retorne el servidor, para pasárselo a React; para ello pon el código:
       .then((response) => response.json())
-      .then((dataLogin) => {
-        console.log('llego hasta aquí?');
-        return dataLogin;
+      .then((data) => {
+        // console.log('llego hasta aquí?', data);
+        return data;
       })
   );
 };
