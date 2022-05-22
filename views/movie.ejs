@@ -1,1 +1,29 @@
-<h1>HOLA :D</h1>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Netflix</title>
+    <!-- <link
+      rel="stylesheet"
+      href="../src/public-movies-styles/styles-global.css"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="../src/public-react/static/css/main.c2405610.chunk.css"
+    />
+  </head>
+
+  <body className="body-ejs">
+    <article className="card">
+      <img
+        className="card__img"
+        src="<%= image %>"
+        alt="Carátula de <%= title %>"
+        }
+      />
+      <h3 className="card__title"><%= title %></h3>
+      <p className="card__description">Género: <%= gender %></p>
+    </article>
+  </body>
+</html>

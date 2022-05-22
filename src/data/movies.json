@@ -1,29 +1,26 @@
-{
-  "success": true,
-  "movies": [
-    {
-      "id": "1",
-      "title": "Gambita de dama xD",
-      "gender": "Drama",
-      "image": "//localhost:4000/gambito.jpg"
-    },
-    {
-      "id": "2",
-      "title": "Friends",
-      "gender": "Comedia",
-      "image": "//localhost:4000/friends.jpg"
-    },
-    {
-      "id": "3",
-      "title": "Cars",
-      "gender": "Animación",
-      "image": "//localhost:4000/friends.jpg"
-    },
-    {
-      "id": "4",
-      "title": "Cars de mentira",
-      "gender": "Animación",
-      "image": "//localhost:4000/gambito.jpg"
-    }
-  ]
-}
+[
+  {
+    "id": "1",
+    "title": "Gambita de dama xD",
+    "gender": "Drama",
+    "image": "//localhost:4000/gambito.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Friends",
+    "gender": "Comedia",
+    "image": "//localhost:4000/friends.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Cars",
+    "gender": "Animación",
+    "image": "//localhost:4000/friends.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Cars de mentira",
+    "gender": "Animación",
+    "image": "//localhost:4000/gambito.jpg"
+  }
+]

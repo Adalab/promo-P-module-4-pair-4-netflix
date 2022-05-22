@@ -11,10 +11,11 @@ import SignUp from './SignUp';
 import apiMovies from '../services/api-movies';
 import apiUser from '../services/api-user';
 import router from '../services/router';
+import LS from '../services/local-storage';
 
 const App = () => {
   // state: user
-  const [userId, setUserId] = useState('');
+  const [userId, setUserId] = useState(LS.get('userId', ''));
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -71,6 +72,11 @@ const App = () => {
     }
   }, [userId]);
 
+  //  Mantener logada a la usuaria.
+  useEffect(() => {
+    LS.set('userId', userId);
+  }, [userId]);
+
   /*
   Event: enviar datos del login al API.
   Con este evento enviamos los datos del login al servidor cuando la usuaria lanza el evento.
@@ -119,8 +125,10 @@ const App = () => {
   Le tenemos que indicar qué datos (nombre, email y contraseña) queremos enviar al API.
   También le tenemos que indicar cuál es la usuaria actual, por ello enviamos el userId
   */
-  const sendProfileToApi = (userId, data) => {
-    apiUser.sendProfileToApi(userId, data).then(() => {
+  const sendProfileToApi = (data, userId) => {
+    console.log('XXX-->USERID-APP', userId);
+
+    apiUser.sendProfileToApi(data, userId).then(() => {
       // Después de enviar los datos al servidor los volvemos a pedir al servidor para tenerlos actualizados
       apiUser.getProfileFromApi(userId).then((response) => {
         setUserName(response.name);
@@ -136,6 +144,7 @@ const App = () => {
   Recargamos la página para que se borren todos los datos del estado de React.
   */
   const logout = () => {
+    setUserId('');
     router.redirect('/');
     router.reload();
   };
@@ -161,7 +170,6 @@ const App = () => {
       No es necesario pasarle el userId, no necesita saberlo, le basta con saber si está logada o no.
       De esta forma Header maneja datos más simples y solo los que necesita. Queremos que Header sea lo más simple posible. */}
       <Header isUserLogged={!!userId} logout={logout} />
-
       <Switch>
         <Route exact path='/'>
           <AllMovies
